@@ -1,5 +1,5 @@
 import portfolioConfig from '@/config/portfolio.config';
-import { BiFolder2Open, BiBuilding, BiCalendar } from 'react-icons/bi';
+import { BiFolderOpen, BiBuilding, BiCalendar } from 'react-icons/bi';
 
 export default function Projects() {
   const { projects } = portfolioConfig;
@@ -16,7 +16,7 @@ export default function Projects() {
             {/* Title row */}
             <div className="flex items-start gap-3 mb-3">
               <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white text-lg flex-shrink-0 mt-0.5">
-                <BiFolder2Open />
+                <BiFolderOpen />
               </div>
               <div className="flex-1 min-w-0">
                 <h3 className="font-sans text-lg font-bold text-slate-900 tracking-tight mb-1">

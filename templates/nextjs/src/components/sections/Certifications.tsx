@@ -1,5 +1,5 @@
 import portfolioConfig from '@/config/portfolio.config';
-import { BiPatchCheck, BiBuilding, BiCalendar, BiLink } from 'react-icons/bi';
+import { BiBadgeCheck, BiBuilding, BiCalendar, BiLink } from 'react-icons/bi';
 
 export default function Certifications() {
   const { certifications } = portfolioConfig;
@@ -16,7 +16,7 @@ export default function Certifications() {
             {/* Icon + name */}
             <div className="flex items-start gap-3">
               <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center text-white text-xl flex-shrink-0">
-                <BiPatchCheck />
+                <BiBadgeCheck />
               </div>
               <h3 className="font-sans text-base font-bold text-slate-900 tracking-tight leading-snug mt-0.5">
                 {cert.name}

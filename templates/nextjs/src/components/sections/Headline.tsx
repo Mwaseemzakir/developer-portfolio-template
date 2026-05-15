@@ -1,7 +1,7 @@
 import portfolioConfig from '@/config/portfolio.config';
 import {
-  BiEnvelopeFill,
-  BiGeoAltFill,
+  BiEnvelope,
+  BiMapPin,
   BiGlobe,
   BiLogoLinkedin,
   BiLogoGithub,
@@ -13,14 +13,14 @@ const contactItems = [
     label: 'Email',
     getValue: () => portfolioConfig.contact.email,
     getHref: () => `mailto:${portfolioConfig.contact.email}`,
-    Icon: BiEnvelopeFill,
+    Icon: BiEnvelope,
     iconBg: 'bg-blue-600',
   },
   {
     label: 'Location',
     getValue: () => portfolioConfig.contact.address,
     getHref: () => `https://www.google.com/maps?q=${encodeURIComponent(portfolioConfig.contact.address)}`,
-    Icon: BiGeoAltFill,
+    Icon: BiMapPin,
     iconBg: 'bg-blue-600',
   },
   {

@@ -1,17 +1,17 @@
 import portfolioConfig from '@/config/portfolio.config';
-import { BiPencilSquare, BiLogoMediumSquare, BiLogoYoutube } from 'react-icons/bi';
+import { BiEdit, BiLogoMediumSquare, BiLogoYoutube } from 'react-icons/bi';
 import type { IconType } from 'react-icons';
 import type { ContentPlatform } from '@/config/portfolio.types';
 
 const PLATFORM_ICONS: Record<string, IconType> = {
-  blog: BiPencilSquare,
+  blog: BiEdit,
   medium: BiLogoMediumSquare,
   youtube: BiLogoYoutube,
-  custom: BiPencilSquare,
+  custom: BiEdit,
 };
 
 function PlatformCard({ platform }: { platform: ContentPlatform }) {
-  const Icon = PLATFORM_ICONS[platform.icon] ?? BiPencilSquare;
+  const Icon = PLATFORM_ICONS[platform.icon] ?? BiEdit;
 
   return (
     <a

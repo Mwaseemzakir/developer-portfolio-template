@@ -2,25 +2,25 @@
 
 import { useEffect, useState } from 'react';
 import {
-  BiHouseDoor,
-  BiPersonLinesFill,
-  BiGear,
+  BiHome,
+  BiUser,
+  BiCog,
   BiBriefcase,
-  BiMortarboard,
-  BiFolder2Open,
-  BiPencilSquare,
-  BiPatchCheck,
+  BiBook,
+  BiFolderOpen,
+  BiEdit,
+  BiBadgeCheck,
 } from 'react-icons/bi';
 
 const NAV_ITEMS = [
-  { id: 'headline', label: 'Home', Icon: BiHouseDoor },
-  { id: 'profile-summary', label: 'Summary', Icon: BiPersonLinesFill },
-  { id: 'skills', label: 'Skills', Icon: BiGear },
+  { id: 'headline', label: 'Home', Icon: BiHome },
+  { id: 'profile-summary', label: 'Summary', Icon: BiUser },
+  { id: 'skills', label: 'Skills', Icon: BiCog },
   { id: 'employment', label: 'Employment', Icon: BiBriefcase },
-  { id: 'education', label: 'Education', Icon: BiMortarboard },
-  { id: 'project', label: 'Projects', Icon: BiFolder2Open },
-  { id: 'content-creator', label: 'Content', Icon: BiPencilSquare },
-  { id: 'certification', label: 'Certifications', Icon: BiPatchCheck },
+  { id: 'education', label: 'Education', Icon: BiBook },
+  { id: 'project', label: 'Projects', Icon: BiFolderOpen },
+  { id: 'content-creator', label: 'Content', Icon: BiEdit },
+  { id: 'certification', label: 'Certifications', Icon: BiBadgeCheck },
 ];
 
 export default function MobileNav() {

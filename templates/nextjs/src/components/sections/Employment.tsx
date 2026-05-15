@@ -1,14 +1,14 @@
 import portfolioConfig from '@/config/portfolio.config';
 import type { ExperienceEntry } from '@/config/portfolio.types';
 import {
-  BiBriefcaseFill,
+  BiBriefcase as BiBriefcaseFilled,
   BiBuilding,
-  BiHouseFill,
-  BiGeoAltFill,
+  BiHome,
+  BiMapPin,
   BiCalendar,
-  BiGearFill,
-  BiAwardFill,
-  BiClockHistory,
+  BiCog,
+  BiAward,
+  BiHistory,
 } from 'react-icons/bi';
 
 function parseDate(dateStr: string): Date {
@@ -67,15 +67,15 @@ function TimelineEntry({ entry, isTraining }: { entry: ExperienceEntry; isTraini
               }`}
             >
               {isTraining ? (
-                <><BiClockHistory className="text-sm" /> Part-Time</>
+                <><BiHistory className="text-sm" /> Part-Time</>
               ) : entry.jobType === 'Remote' ? (
-                <><BiHouseFill className="text-sm" /> Remote</>
+                <><BiHome className="text-sm" /> Remote</>
               ) : (
                 <><BiBuilding className="text-sm" /> On-site</>
               )}
             </span>
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[0.8125rem] font-semibold bg-amber-50 text-amber-600">
-              <BiGeoAltFill className="text-sm" />
+              <BiMapPin className="text-sm" />
               {entry.location}
             </span>
           </div>
@@ -107,7 +107,7 @@ function TimelineEntry({ entry, isTraining }: { entry: ExperienceEntry; isTraini
         {/* Technologies */}
         <div className="mt-4">
           <div className="inline-flex items-center gap-1.5 text-slate-700 font-semibold text-[0.8125rem] uppercase tracking-wider mb-2">
-            <BiGearFill className="text-slate-400" />
+            <BiCog className="text-slate-400" />
             Technologies:
           </div>
           <div className="flex flex-wrap gap-1.5 mt-1.5">
@@ -133,7 +133,7 @@ export default function Employment() {
 
       {/* Experience badge */}
       <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-full font-semibold text-sm mb-7">
-        <BiBriefcaseFill className="text-lg" />
+        <BiBriefcaseFilled className="text-lg" />
         <span>{totalYears}+ years of experience</span>
       </div>
 
@@ -149,7 +149,7 @@ export default function Employment() {
         <>
           <hr className="my-9 border-slate-200" />
           <h2 className="flex items-center gap-2.5 font-serif text-2xl font-extrabold text-slate-900 mb-6 tracking-tight">
-            <BiAwardFill className="text-sky-500" />
+            <BiAward className="text-sky-500" />
             Part-Time Training Experience
           </h2>
           <div className="relative pl-8" style={{ borderLeft: '2px solid #0ea5e9', borderRadius: '2px' }}>

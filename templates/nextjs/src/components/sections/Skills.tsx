@@ -1,16 +1,16 @@
 import portfolioConfig from '@/config/portfolio.config';
-import { BiCodeSquare, BiData, BiPalette, BiGitBranch } from 'react-icons/bi';
+import { BiCodeCurly, BiData, BiPalette, BiGitBranch } from 'react-icons/bi';
 import type { IconType } from 'react-icons';
 
 const CATEGORY_ICON_MAP: Array<{ keyword: string; Icon: IconType }> = [
-  { keyword: '.NET', Icon: BiCodeSquare },
+  { keyword: '.NET', Icon: BiCodeCurly },
   { keyword: 'Database', Icon: BiData },
   { keyword: 'Client', Icon: BiPalette },
   { keyword: 'Version', Icon: BiGitBranch },
 ];
 
 function getCategoryIcon(name: string): IconType {
-  return CATEGORY_ICON_MAP.find((m) => name.includes(m.keyword))?.Icon ?? BiCodeSquare;
+  return CATEGORY_ICON_MAP.find((m) => name.includes(m.keyword))?.Icon ?? BiCodeCurly;
 }
 
 export default function Skills() {
