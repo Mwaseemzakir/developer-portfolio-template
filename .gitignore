@@ -44,3 +44,4 @@ templates/nextjs/next-env.d.ts
 
 # TypeScript
 *.tsbuildinfo
+.claude/settings.local.json
