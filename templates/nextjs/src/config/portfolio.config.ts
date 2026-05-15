@@ -5,7 +5,7 @@
  *
  *  This is the single source of truth for all portfolio data.
  *  Replace every value below with your own information, swap
- *  public/pp.jpeg for your photo and public/resume.pdf for
+ *  public/profile_picture.png for your photo and public/resume.pdf for
  *  your CV, then run `npm run dev`.
  */
 
@@ -18,9 +18,9 @@ const portfolioConfig: PortfolioConfig = {
     title: 'Technical Lead',
     subtitle: 'Full Stack Developer | .NET | Angular',
     tagline: 'Technical Lead, Senior Software Engineer, Technical Trainer and Content Creator',
-    profileImage: '/pp.jpeg',
+    profileImage: '/profile_picture.png',
     resumeFile: '/resume.pdf',
-    resumeFileName: 'Muhammad_Waseem_Resume.pdf',
+    resumeFileName: 'resume.pdf',
   },
 
   contact: {
