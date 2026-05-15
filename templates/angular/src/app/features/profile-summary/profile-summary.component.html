@@ -1,0 +1,63 @@
+<div class="shared-style fade-in">
+  <h2>{{ profileSummary.title }}</h2>
+  <div class="summary-content">
+    <div class="quote-icon">
+      <i class="bi bi-quote"></i>
+    </div>
+    <p class="introduction">
+      {{ profileSummary.introduction }}
+    </p>
+  </div>
+</div>
+
+<style>
+
+.summary-content {
+    position: relative;
+    padding: 24px 24px 24px 28px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border-left: 3px solid #2563eb;
+}
+
+.quote-icon {
+    position: absolute;
+    top: -12px;
+    left: 16px;
+    width: 36px;
+    height: 36px;
+    background: #2563eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.125rem;
+}
+
+.introduction {
+    color: #334155;
+    line-height: 1.9;
+    margin-bottom: 0;
+    font-size: 1.0625rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+
+@media (max-width: 600px) {
+    .summary-content {
+        padding: 20px;
+    }
+
+    .introduction {
+        font-size: 0.9375rem;
+    }
+    
+    .quote-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+}
+
+</style>

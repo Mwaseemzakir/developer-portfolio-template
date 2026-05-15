@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/Dell/Downloads/Code/cv.mwaseemzakir.com/**)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\Dell\\\\Downloads\\\\Code\\\\developer-portfolio-template\\\\cv.mwaseemzakir.com\" -Recurse -Force | Select-Object FullName | ForEach-Object { $_.FullName -replace [regex]::Escape\\(\"c:\\\\Users\\\\Dell\\\\Downloads\\\\Code\\\\developer-portfolio-template\\\\\"\\), \"\" } | Sort-Object)",
+      "Bash(Get-ChildItem \"c:\\\\Users\\\\Dell\\\\Downloads\\\\Code\\\\developer-portfolio-template\" -Recurse)",
+      "Bash(Select-Object FullName)",
+      "Bash(Format-List)",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git add *)"
+    ]
+  }
+}

@@ -1,0 +1,437 @@
+<div class="shared-style fade-in">
+  <h2>Employment History</h2>
+  <div class="experience-badge">
+    <i class="bi bi-briefcase-fill"></i>
+    <span>{{ employmentData?.totalExperience }}+ years of experience</span>
+  </div>
+  
+  <div class="employment-timeline">
+    @for (entry of employmentData?.entries; track $index) {
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="employment-header">
+            <div class="header-main">
+              <h3>{{ entry.position }}</h3>
+              <div class="job-meta">
+                <span class="job-type {{ entry.jobType === 'Remote' ? 'remote' : 'onsite' }}">
+                  <i class="bi" [ngClass]="entry.jobType === 'Remote' ? 'bi-house-fill' : 'bi-building'"></i>
+                  {{ entry.jobType }}
+                </span>
+                <span class="job-location">
+                  <i class="bi bi-geo-alt-fill"></i>
+                  {{ entry.location }}
+                </span>
+              </div>
+            </div>
+            <div class="company-info">
+              <a [href]="entry.companyUrl" target="_blank" rel="noopener noreferrer" class="company-link">
+                <i class="bi bi-building"></i>
+                {{ entry.company }}
+              </a>
+              <span class="date-range">
+                <i class="bi bi-calendar3"></i>
+                {{ entry.startDate }} - {{ entry.endDate }}
+                <span class="duration">({{ calculateDuration(entry.startDate, entry.endDate) }})</span>
+              </span>
+            </div>
+          </div>
+          
+          <p class="description">{{ entry.description }}</p>
+          
+          <div class="skills-wrapper">
+            <div class="skills-label">
+              <i class="bi bi-gear-fill"></i>
+              Technologies:
+            </div>
+            <div class="skills-tags">
+              @for (skill of entry.skills; track $index) {
+                <span class="skill-badge">{{ skill }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+  
+  <!-- Part-Time Training Experience -->
+  @if (employmentData?.trainingEntries && (employmentData?.trainingEntries?.length ?? 0) > 0) {
+    <div class="section-divider"></div>
+    <h2 class="training-title">
+      <i class="bi bi-award-fill"></i>
+      Part-Time Training Experience
+    </h2>
+    <div class="employment-timeline">
+      @for (entry of employmentData?.trainingEntries; track $index) {
+        <div class="timeline-item training-item">
+          <div class="timeline-dot training-dot"></div>
+          <div class="timeline-content">
+            <div class="employment-header">
+              <div class="header-main">
+                <h3>{{ entry.position }}</h3>
+                <div class="job-meta">
+                  <span class="job-type part-time">
+                    <i class="bi bi-clock-history"></i>
+                    Part-Time
+                  </span>
+                  <span class="job-location">
+                    <i class="bi bi-geo-alt-fill"></i>
+                    {{ entry.location }}
+                  </span>
+                </div>
+              </div>
+              <div class="company-info">
+                <a [href]="entry.companyUrl" target="_blank" rel="noopener noreferrer" class="company-link">
+                  <i class="bi bi-building"></i>
+                  {{ entry.company }}
+                </a>
+                <span class="date-range">
+                  <i class="bi bi-calendar3"></i>
+                  {{ entry.startDate }} - {{ entry.endDate }}
+                  <span class="duration">({{ calculateDuration(entry.startDate, entry.endDate) }})</span>
+                </span>
+              </div>
+            </div>
+            
+            <p class="description">{{ entry.description }}</p>
+            
+            <div class="skills-wrapper">
+              <div class="skills-label">
+                <i class="bi bi-gear-fill"></i>
+                Technologies:
+              </div>
+              <div class="skills-tags">
+                @for (skill of entry.skills; track $index) {
+                  <span class="skill-badge">{{ skill }}</span>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+
+<style>
+
+.experience-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: #2563eb;
+    color: white;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 28px;
+}
+
+.experience-badge i {
+    font-size: 1.125rem;
+}
+
+.employment-timeline {
+    position: relative;
+    padding-left: 32px;
+}
+
+.employment-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    bottom: 16px;
+    width: 2px;
+    background: #2563eb;
+    border-radius: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 32px;
+    padding-left: 24px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -37px;
+    top: 8px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid #2563eb;
+    transition: all 0.2s ease;
+    z-index: 1;
+}
+
+.timeline-item:hover .timeline-dot {
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.timeline-content {
+    background: #f8fafc;
+    border-radius: 10px;
+    padding: 24px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.timeline-item:hover .timeline-content {
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.employment-header {
+    margin-bottom: 16px;
+}
+
+.header-main {
+    margin-bottom: 12px;
+}
+
+h3 {
+    color: #0f172a;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.01em;
+}
+
+.job-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.job-type, .job-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 600;
+}
+
+.job-type {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.job-type.remote {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+.job-location {
+    background: #fffbeb;
+    color: #d97706;
+}
+
+.company-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+    border-top: 1px solid #e2e8f0;
+}
+
+.company-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: color 0.2s ease;
+}
+
+.company-link:hover {
+    color: #1d4ed8;
+}
+
+.date-range {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #64748b;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.date-range .duration {
+    color: #2563eb;
+    font-weight: 600;
+    margin-left: 4px;
+}
+
+.description {
+    line-height: 1.7;
+    color: #475569;
+    margin-bottom: 16px;
+    font-size: 0.9375rem;
+}
+
+.skills-wrapper {
+    margin-top: 16px;
+}
+
+.skills-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 10px;
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.skills-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.skill-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    background: #2563eb;
+    color: white;
+    border-radius: 14px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.skill-badge:hover {
+    background: #1d4ed8;
+}
+
+.section-divider {
+    height: 1px;
+    background: #e2e8f0;
+    margin: 36px 0 28px 0;
+}
+
+.training-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #0f172a;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+}
+
+.training-title i {
+    color: #0ea5e9;
+}
+
+.training-item .timeline-dot {
+    background: white;
+    border-color: #0ea5e9;
+}
+
+.training-item:hover .timeline-dot {
+    box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+}
+
+.job-type.part-time {
+    background: #f0f9ff;
+    color: #0ea5e9;
+}
+
+@media (max-width: 768px) {
+    .employment-timeline {
+        padding-left: 20px;
+    }
+    
+    .timeline-item {
+        padding-left: 16px;
+    }
+    
+    .timeline-dot {
+        left: -29px;
+        width: 12px;
+        height: 12px;
+    }
+
+    h3 {
+        font-size: 1.125rem;
+    }
+
+    .company-link {
+        font-size: 0.875rem;
+    }
+
+    .description {
+        font-size: 0.875rem;
+    }
+
+    .skill-badge {
+        font-size: 0.6875rem;
+        padding: 4px 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .employment-timeline {
+        padding-left: 16px;
+    }
+    
+    .timeline-item {
+        padding-left: 14px;
+        margin-bottom: 24px;
+    }
+    
+    .timeline-dot {
+        left: -25px;
+        width: 10px;
+        height: 10px;
+    }
+    
+    .timeline-content {
+        padding: 16px;
+    }
+
+    h3 {
+        font-size: 1rem;
+    }
+
+    .job-meta {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .company-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .description {
+        font-size: 0.8125rem;
+    }
+
+    .skill-badge {
+        font-size: 0.625rem;
+        padding: 3px 8px;
+    }
+}
+
+</style>

@@ -1,0 +1,155 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "portfolio.schema.json",
+  "title": "PortfolioConfig",
+  "description": "The data contract every developer-portfolio-template framework implements",
+  "type": "object",
+  "required": ["personal", "contact", "summary", "skills", "experience", "education", "projects", "certifications", "contentCreation"],
+  "properties": {
+    "personal": {
+      "type": "object",
+      "required": ["name", "title", "subtitle", "tagline", "profileImage", "resumeFile", "resumeFileName"],
+      "properties": {
+        "name":           { "type": "string", "description": "Full name" },
+        "title":          { "type": "string", "description": "Primary job title (e.g. Technical Lead)" },
+        "subtitle":       { "type": "string", "description": "Role tags line (e.g. Full Stack | .NET | Angular)" },
+        "tagline":        { "type": "string", "description": "One-liner bio shown under the title" },
+        "profileImage":   { "type": "string", "description": "Path to profile picture relative to the project public/assets folder" },
+        "resumeFile":     { "type": "string", "description": "Path to resume PDF" },
+        "resumeFileName": { "type": "string", "description": "Download filename for the resume PDF" }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "required": ["email", "phone", "address", "website", "linkedin", "github", "twitter"],
+      "properties": {
+        "email":    { "type": "string", "format": "email" },
+        "phone":    { "type": "string" },
+        "address":  { "type": "string", "description": "City, Country" },
+        "website":  { "type": "string", "format": "uri" },
+        "linkedin": { "type": "string", "format": "uri" },
+        "github":   { "type": "string", "format": "uri" },
+        "twitter":  { "type": "string", "format": "uri" }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "description": "Professional bio paragraph shown in the Profile Summary section"
+    },
+    "skills": {
+      "type": "array",
+      "description": "Skill categories — each rendered as a card",
+      "items": {
+        "type": "object",
+        "required": ["name", "skills"],
+        "properties": {
+          "name":   { "type": "string", "description": "Category label" },
+          "skills": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "experience": {
+      "type": "object",
+      "required": ["jobs", "training"],
+      "properties": {
+        "jobs": {
+          "type": "array",
+          "description": "Full-time employment entries",
+          "items": { "$ref": "#/definitions/experienceEntry" }
+        },
+        "training": {
+          "type": "array",
+          "description": "Part-time training / teaching roles",
+          "items": { "$ref": "#/definitions/experienceEntry" }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["degree", "institution", "startDate", "endDate", "grade", "courses"],
+        "properties": {
+          "degree":      { "type": "string" },
+          "institution": { "type": "string" },
+          "startDate":   { "type": "string", "description": "e.g. Oct 2015" },
+          "endDate":     { "type": "string", "description": "e.g. Jul 2019" },
+          "grade":       { "type": "string" },
+          "courses":     { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "company", "year", "description", "skills"],
+        "properties": {
+          "name":        { "type": "string" },
+          "company":     { "type": "string" },
+          "year":        { "type": "string" },
+          "description": { "type": "string" },
+          "skills":      { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "issuer", "date", "description"],
+        "properties": {
+          "name":           { "type": "string" },
+          "issuer":         { "type": "string" },
+          "date":           { "type": "string", "description": "e.g. Jul 2022" },
+          "description":    { "type": "string" },
+          "expirationDate": { "type": "string" },
+          "credentialId":   { "type": "string" },
+          "credentialUrl":  { "type": "string" }
+        }
+      }
+    },
+    "contentCreation": {
+      "type": "object",
+      "required": ["description", "platforms", "topics"],
+      "properties": {
+        "description": { "type": "string" },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "icon", "url", "description", "gradient"],
+            "properties": {
+              "name":        { "type": "string" },
+              "icon":        { "type": "string", "description": "Bootstrap icon class (bi-xxx) for Angular / icon key for other frameworks" },
+              "url":         { "type": "string", "format": "uri" },
+              "description": { "type": "string" },
+              "gradient":    { "type": "string", "description": "CSS gradient string" }
+            }
+          }
+        },
+        "topics": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "experienceEntry": {
+      "type": "object",
+      "required": ["company", "companyUrl", "position", "startDate", "endDate", "description", "skills", "jobType", "location"],
+      "properties": {
+        "company":    { "type": "string" },
+        "companyUrl": { "type": "string", "format": "uri" },
+        "position":   { "type": "string" },
+        "startDate":  { "type": "string", "description": "e.g. Jan 2025" },
+        "endDate":    { "type": "string", "description": "e.g. Dec 2024 or Present" },
+        "description":{ "type": "string" },
+        "skills":     { "type": "array", "items": { "type": "string" } },
+        "jobType":    { "type": "string", "enum": ["Remote", "On-site"] },
+        "location":   { "type": "string" }
+      }
+    }
+  }
+}

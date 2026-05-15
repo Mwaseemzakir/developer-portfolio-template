@@ -1,0 +1,289 @@
+<div class="shared-style headline-container fade-in">
+  <div class="headline-content">
+    <h1 class="main-title">{{ headline.name }}</h1>
+    <h2 class="subtitle">{{ headline.title }}</h2>
+    <p class="role-tags">{{ headline.subtitle }}</p>
+    <p class="tagline">{{ headline.tagline }}</p>
+  </div>
+  
+  <div class="contact-info">
+    <a href="mailto:{{ headline.contactInfo.email }}" class="contact-item" target="_blank">
+      <div class="icon-wrapper">
+        <i class="bi bi-envelope-fill"></i>
+      </div>
+      <div class="contact-details">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">{{ headline.contactInfo.email }}</span>
+      </div>
+    </a>
+    
+    <a href="https://www.google.com/maps?q={{ headline.contactInfo.address }}" target="_blank" class="contact-item">
+      <div class="icon-wrapper">
+        <i class="bi bi-geo-alt-fill"></i>
+      </div>
+      <div class="contact-details">
+        <span class="contact-label">Location</span>
+        <span class="contact-value">{{ headline.contactInfo.address }}</span>
+      </div>
+    </a>
+    
+    <a href="{{ headline.contactInfo.website }}" target="_blank" class="contact-item">
+      <div class="icon-wrapper">
+        <i class="bi bi-globe"></i>
+      </div>
+      <div class="contact-details">
+        <span class="contact-label">Website</span>
+        <span class="contact-value">Visit my site</span>
+      </div>
+    </a>
+    
+    <a href="{{ headline.contactInfo.linkedin }}" target="_blank" class="contact-item">
+      <div class="icon-wrapper linkedin">
+        <i class="bi bi-linkedin"></i>
+      </div>
+      <div class="contact-details">
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value">Connect with me</span>
+      </div>
+    </a>
+    
+    <a href="{{ headline.contactInfo.github }}" target="_blank" class="contact-item">
+      <div class="icon-wrapper github">
+        <i class="bi bi-github"></i>
+      </div>
+      <div class="contact-details">
+        <span class="contact-label">GitHub</span>
+        <span class="contact-value">View my code</span>
+      </div>
+    </a>
+    
+    <a href="{{ headline.contactInfo.twitter }}" target="_blank" class="contact-item">
+      <div class="icon-wrapper twitter">
+        <i class="bi bi-twitter-x"></i>
+      </div>
+      <div class="contact-details">
+        <span class="contact-label">X / Twitter</span>
+        <span class="contact-value">Follow me</span>
+      </div>
+    </a>
+  </div>
+</div>
+
+<style>
+.headline-container {
+    color: #0f172a;
+    padding-top: 10px;
+    position: relative;
+}
+
+.headline-content {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.75rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.subtitle {
+    color: #2563eb;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.375rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+    animation: fadeInUp 0.5s ease-out 0.08s backwards;
+}
+
+.role-tags {
+    color: #475569;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+    animation: fadeInUp 0.5s ease-out 0.12s backwards;
+}
+
+.tagline {
+    color: #64748b;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin-bottom: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 0.5s ease-out 0.16s backwards;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    background: #f8fafc;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #1e293b;
+    transition: all 0.2s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.contact-item:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    font-size: 1.125rem;
+    background: #2563eb;
+    color: white;
+    flex-shrink: 0;
+}
+
+.icon-wrapper.linkedin {
+    background: #0077b5;
+}
+
+.icon-wrapper.github {
+    background: #24292f;
+}
+
+.icon-wrapper.twitter {
+    background: #0f172a;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.contact-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #94a3b8;
+    margin-bottom: 2px;
+}
+
+.contact-value {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1e293b;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.125rem;
+    }
+
+    .role-tags {
+        font-size: 0.875rem;
+    }
+
+    .tagline {
+        font-size: 0.875rem;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .contact-item {
+        padding: 12px 14px;
+    }
+
+    .icon-wrapper {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .headline-container {
+        padding-top: 80px;
+    }
+
+    .main-title {
+        font-size: 1.75rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .headline-container {
+        padding-top: 70px;
+    }
+
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9375rem;
+    }
+
+    .contact-item {
+        padding: 10px 12px;
+    }
+
+    .icon-wrapper {
+        width: 32px;
+        height: 32px;
+        font-size: 0.875rem;
+    }
+
+    .contact-label {
+        font-size: 0.625rem;
+    }
+
+    .contact-value {
+        font-size: 0.8125rem;
+    }
+}
+</style>

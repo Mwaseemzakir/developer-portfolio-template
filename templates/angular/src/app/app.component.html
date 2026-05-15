@@ -1,0 +1,330 @@
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="profile-picture">
+      <img src="assets/pp.jpeg" [alt]="sidebarName">
+    </div>
+    <h2 class="sidebar-name">{{ sidebarName }}</h2>
+    <p class="sidebar-title">{{ sidebarTitle }}</p>
+  </div>
+  <nav>
+    <ul>
+      <li>
+        <a (click)="scrollToSection('headline')" [class.active]="currentSection === 'headline'">
+          <i class="bi bi-house-door"></i>
+          <span>Home</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="scrollToSection('profile-summary')" [class.active]="currentSection === 'profile-summary'">
+          <i class="bi bi-person-lines-fill"></i>
+          <span>Summary</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="scrollToSection('skills')" [class.active]="currentSection === 'skills'">
+          <i class="bi bi-gear"></i>
+          <span>Skills</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="scrollToSection('employment')" [class.active]="currentSection === 'employment'">
+          <i class="bi bi-briefcase"></i>
+          <span>Employment</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="scrollToSection('education')" [class.active]="currentSection === 'education'">
+          <i class="bi bi-mortarboard"></i>
+          <span>Education</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="scrollToSection('project')" [class.active]="currentSection === 'project'">
+          <i class="bi bi-folder2-open"></i>
+          <span>Projects</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="scrollToSection('content-creator')" [class.active]="currentSection === 'content-creator'">
+          <i class="bi bi-pencil-square"></i>
+          <span>Content</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="scrollToSection('certification')" [class.active]="currentSection === 'certification'">
+          <i class="bi bi-patch-check"></i>
+          <span>Certifications</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <a (click)="downloadCV()" class="download-cv">
+      <i class="bi bi-download"></i>
+      <span>Download CV</span>
+    </a>
+  </div>
+</div>
+
+<div class="main">
+  <app-headline id="headline"></app-headline>
+  <app-profile-summary id="profile-summary"></app-profile-summary>
+  <app-skills id="skills"></app-skills>
+  <app-employment id="employment"></app-employment>
+  <app-education id="education"></app-education>
+  <app-project id="project"></app-project>
+  <app-content-creator id="content-creator"></app-content-creator>
+  <app-certification id="certification"></app-certification>
+
+  <footer class="site-footer">
+    <p>&copy; {{ currentYear }} {{ sidebarName }}. All rights reserved.</p>
+  </footer>
+</div>
+
+<style>
+    :host {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: 'Inter', sans-serif;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+        padding: 0;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar-header {
+        padding: 32px 20px 24px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .profile-picture {
+        margin-bottom: 16px;
+    }
+
+    .profile-picture img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid rgba(255, 255, 255, 0.15);
+        object-fit: cover;
+        transition: border-color 0.2s ease;
+    }
+
+    .profile-picture img:hover {
+        border-color: #3b82f6;
+    }
+
+    .sidebar-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #fff;
+        margin: 0 0 4px;
+        letter-spacing: -0.01em;
+    }
+
+    .sidebar-title {
+        font-size: 0.8125rem;
+        color: #94a3b8;
+        margin: 0;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+    }
+
+    nav {
+        flex: 1;
+        padding: 16px 12px;
+    }
+
+    .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .sidebar li {
+        margin-bottom: 2px;
+    }
+
+    .sidebar a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 500;
+        font-size: 0.875rem;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 10px 16px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+
+    .sidebar a i {
+        font-size: 1.125rem;
+        width: 20px;
+        text-align: center;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+    }
+
+    .sidebar a:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: #fff;
+    }
+
+    .sidebar a:hover i {
+        opacity: 1;
+    }
+
+    .sidebar a.active {
+        background: #2563eb;
+        color: #fff;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
+
+    .sidebar a.active i {
+        opacity: 1;
+    }
+
+    .sidebar-footer {
+        padding: 16px 12px 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .download-cv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-decoration: none;
+    }
+
+    .download-cv:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.25);
+        color: #fff;
+    }
+
+    /* Main area */
+    .main {
+        flex: 1;
+        padding: 24px;
+        overflow-y: auto;
+        background: #f1f5f9;
+    }
+
+    /* Footer */
+    .site-footer {
+        max-width: 900px;
+        margin: 32px auto 16px;
+        padding: 24px 0;
+        text-align: center;
+        border-top: 1px solid #e2e8f0;
+    }
+
+    .site-footer p {
+        color: #94a3b8;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    /* Desktop layout */
+    @media (min-width: 768px) {
+        :host {
+            flex-direction: row;
+        }
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow-y: auto;
+        }
+
+        .main {
+            margin-left: 240px;
+            padding: 32px;
+        }
+    }
+
+    /* Mobile layout */
+    @media (max-width: 767px) {
+        .sidebar {
+            width: 100%;
+            height: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            flex-direction: row;
+            align-items: center;
+            padding: 8px 12px;
+        }
+
+        .sidebar-header {
+            display: none;
+        }
+
+        .sidebar-footer {
+            display: none;
+        }
+
+        nav {
+            width: 100%;
+            padding: 0;
+        }
+
+        .sidebar ul {
+            display: flex;
+            flex-direction: row;
+            overflow-x: auto;
+            width: 100%;
+            padding: 4px 0;
+            scrollbar-width: none;
+        }
+
+        .sidebar ul::-webkit-scrollbar {
+            display: none;
+        }
+
+        .sidebar li {
+            margin: 0 2px;
+            flex-shrink: 0;
+        }
+
+        .sidebar a {
+            padding: 8px 14px;
+            font-size: 0.8125rem;
+            white-space: nowrap;
+            gap: 6px;
+        }
+
+        .sidebar a i {
+            font-size: 0.875rem;
+        }
+
+        .main {
+            margin-top: 56px;
+            padding: 16px;
+        }
+    }
+</style>
