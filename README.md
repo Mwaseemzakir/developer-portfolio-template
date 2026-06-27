@@ -2,15 +2,23 @@
 
 A professional, fully-featured developer portfolio/CV template available in multiple framework flavors. Pick the technology you already know and ship your portfolio in minutes.
 
+## Live Demos
+
+Both templates are deployed to GitHub Pages on every push to `main`:
+
+- 🏠 **Landing page:** https://mwaseemzakir.github.io/developer-portfolio-template/
+- ⚛️ **Next.js (React):** https://mwaseemzakir.github.io/developer-portfolio-template/nextjs/
+- 🅰️ **Angular:** https://mwaseemzakir.github.io/developer-portfolio-template/angular/
+
 ## Available Templates
 
-| Framework | Directory | Stack | Status |
-|-----------|-----------|-------|--------|
-| **Angular** | [`templates/angular`](./templates/angular) | Angular 17, Bootstrap, SSR | ✅ Ready |
-| **Next.js** | [`templates/nextjs`](./templates/nextjs) | Next.js 14, Tailwind CSS, App Router | ✅ Ready |
-| Astro | `templates/astro` | Coming soon | 🔜 Planned |
-| Vue / Nuxt | `templates/nuxt` | Coming soon | 🔜 Planned |
-| SvelteKit | `templates/sveltekit` | Coming soon | 🔜 Planned |
+| Framework | Directory | Stack | Live Demo | Status |
+|-----------|-----------|-------|-----------|--------|
+| **Angular** | [`templates/angular`](./templates/angular) | Angular 17, Bootstrap, SSR | [View](https://mwaseemzakir.github.io/developer-portfolio-template/angular/) | ✅ Ready |
+| **Next.js** | [`templates/nextjs`](./templates/nextjs) | Next.js 14, Tailwind CSS, App Router | [View](https://mwaseemzakir.github.io/developer-portfolio-template/nextjs/) | ✅ Ready |
+| Astro | `templates/astro` | Coming soon | — | 🔜 Planned |
+| Vue / Nuxt | `templates/nuxt` | Coming soon | — | 🔜 Planned |
+| SvelteKit | `templates/sveltekit` | Coming soon | — | 🔜 Planned |
 
 ## What's Inside
 

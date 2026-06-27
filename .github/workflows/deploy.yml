@@ -59,6 +59,11 @@ jobs:
           cp -r templates/nextjs/out/. _site/nextjs/
           cp -r templates/angular/dist/resume/browser/. _site/angular/
           cp .github/pages/index.html _site/index.html
+          # SSR-enabled Angular builds emit the client shell as index.csr.html
+          # rather than index.html; use it as the entry point for static hosting.
+          if [ ! -f _site/angular/index.html ] && [ -f _site/angular/index.csr.html ]; then
+            cp _site/angular/index.csr.html _site/angular/index.html
+          fi
           # SPA fallback so client-side routes resolve on Pages.
           cp _site/angular/index.html _site/angular/404.html
           # Skip Jekyll processing (keeps files starting with _ and assets intact).
