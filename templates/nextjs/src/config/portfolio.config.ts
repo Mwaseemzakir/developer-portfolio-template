@@ -18,7 +18,8 @@ const portfolioConfig: PortfolioConfig = {
     title: 'Technical Lead',
     subtitle: 'Full Stack Developer | .NET | Angular',
     tagline: 'Technical Lead, Senior Software Engineer, Technical Trainer and Content Creator',
-    profileImage: '/profile_picture.png',
+    // Placeholder avatar — swap for your own (e.g. '/profile_picture.png').
+    profileImage: 'https://ui-avatars.com/api/?name=Muhammad+Waseem&size=200&background=2563eb&color=ffffff&bold=true',
     resumeFile: '/resume.pdf',
     resumeFileName: 'resume.pdf',
   },

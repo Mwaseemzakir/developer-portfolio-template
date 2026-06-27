@@ -5,117 +5,21 @@
  *
  *  This is the single source of truth for all portfolio data.
  *  Replace every value below with your own information, swap
- *  assets/profile_picture.png for your photo and assets/resume.pdf for
- *  your CV, then run `npm start`.
+ *  public/profile_picture.png for your photo and public/resume.pdf for
+ *  your CV, then run `npm run dev`.
  */
 
-// ─── Types ────────────────────────────────────────────────────────────────────
+import type { PortfolioConfig } from './portfolio.types';
 
-export interface ContactInfo {
-  email: string;
-  phone: string;
-  address: string;
-  website: string;
-  linkedin: string;
-  github: string;
-  twitter: string;
-}
-
-export interface Personal {
-  name: string;
-  title: string;
-  subtitle: string;
-  tagline: string;
-  profileImage: string;
-  resumeFile: string;
-  resumeFileName: string;
-}
-
-export interface SkillCategory {
-  name: string;
-  skills: string[];
-}
-
-export interface ExperienceEntry {
-  company: string;
-  companyUrl: string;
-  position: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-  skills: string[];
-  jobType: 'Remote' | 'On-site';
-  location: string;
-}
-
-export interface EducationEntry {
-  degree: string;
-  institution: string;
-  startDate: string;
-  endDate: string;
-  grade: string;
-  courses: string[];
-}
-
-export interface ProjectEntry {
-  name: string;
-  company: string;
-  year: string;
-  description: string;
-  skills: string[];
-}
-
-export interface CertificationEntry {
-  name: string;
-  issuer: string;
-  date: string;
-  description: string;
-  expirationDate?: string;
-  credentialId?: string;
-  credentialUrl?: string;
-}
-
-export interface ContentPlatform {
-  name: string;
-  icon: string;
-  url: string;
-  description: string;
-  gradient: string;
-}
-
-export interface ContentCreation {
-  description: string;
-  platforms: ContentPlatform[];
-  topics: string[];
-}
-
-export interface PortfolioConfig {
-  personal: Personal;
-  contact: ContactInfo;
-  summary: string;
-  skills: SkillCategory[];
-  experience: {
-    jobs: ExperienceEntry[];
-    training: ExperienceEntry[];
-  };
-  education: EducationEntry[];
-  projects: ProjectEntry[];
-  certifications: CertificationEntry[];
-  contentCreation: ContentCreation;
-}
-
-// ─── Configuration ────────────────────────────────────────────────────────────
-
-export const portfolioConfig: PortfolioConfig = {
+const portfolioConfig: PortfolioConfig = {
 
   personal: {
     name: 'Muhammad Waseem',
     title: 'Technical Lead',
     subtitle: 'Full Stack Developer | .NET | Angular',
     tagline: 'Technical Lead, Senior Software Engineer, Technical Trainer and Content Creator',
-    // Placeholder avatar — swap for your own (e.g. 'assets/profile_picture.png').
-    profileImage: 'https://ui-avatars.com/api/?name=Muhammad+Waseem&size=200&background=2563eb&color=ffffff&bold=true',
-    resumeFile: 'assets/resume.pdf',
+    profileImage: '/profile_picture.png',
+    resumeFile: '/resume.pdf',
     resumeFileName: 'resume.pdf',
   },
 
@@ -281,64 +185,56 @@ export const portfolioConfig: PortfolioConfig = {
       name: 'Food Waste Reduction Platform (Letadom)',
       company: 'Squadio',
       year: '2025',
-      description:
-        'Architected a resilient, national-scale food waste automation platform for public sector impact in KSA.',
+      description: 'Architected a resilient, national-scale food waste automation platform for public sector impact in KSA.',
       skills: ['.NET 8', 'IIS', 'GitHub Actions', 'Unit Testing', 'DbUp', 'Web API', 'EF Core'],
     },
     {
       name: 'Zoho Books Integration',
       company: 'Sanad Cash Inc.',
       year: '2024',
-      description:
-        'Integrated Zoho Books with custom-built Web APIs, enabling seamless financial data management for KSA\'s public sector.',
+      description: "Integrated Zoho Books with custom-built Web APIs, enabling seamless financial data management for KSA's public sector.",
       skills: ['.NET Core', 'Web API', 'Zoho Books', 'Performance Optimization'],
     },
     {
       name: 'Career Highlighter',
       company: 'Personal Project',
       year: '2024',
-      description:
-        'Developed a personalized resume website to showcase professional achievements, portfolio and skills in Angular.',
+      description: 'Developed a personalized resume website to showcase professional achievements, portfolio and skills in Angular.',
       skills: ['Angular', 'TypeScript', 'HTML', 'CSS'],
     },
     {
       name: 'Arab National Bank API',
       company: 'Sanad Cash Inc.',
       year: '2023',
-      description:
-        'Developed a high performance Web API for ANB, ensuring smooth integration with core banking systems.',
+      description: 'Developed a high performance Web API for ANB, ensuring smooth integration with core banking systems.',
       skills: ['.NET Core', 'Web API', 'Banking Integration', 'Security'],
     },
     {
       name: 'Paymentology API Integration',
       company: 'Sanad Cash Inc.',
       year: '2023',
-      description:
-        'Developed and integrated the Paymentology API to streamline credit card creation and pay secure operations.',
+      description: 'Developed and integrated the Paymentology API to streamline credit card creation and pay secure operations.',
       skills: ['.NET Core', 'Web API', 'Paymentology API', 'Security'],
     },
     {
       name: 'Dreamer - Dream Management Application',
       company: 'Personal Project',
       year: '2022',
-      description:
-        'Built an MVC-based system allowing users to record and analyze dreams with personalized insights.',
+      description: 'Built an MVC-based system allowing users to record and analyze dreams with personalized insights.',
       skills: ['ASP.NET MVC', 'C#', 'SQL Server', 'Bootstrap'],
     },
     {
       name: 'Personal Blog',
       company: 'Personal Project',
       year: '2022',
-      description:
-        'Designed and developed a personal blogging platform using Astro, showcasing expertise in modern technologies.',
+      description: 'Designed and developed a personal blogging platform using Astro, showcasing expertise in modern technologies.',
       skills: ['Astro', 'JavaScript', 'HTML', 'CSS', 'Content Management'],
     },
     {
       name: 'Public Sector Development Program',
       company: 'Abacus Consulting',
       year: '2021',
-      description:
-        'Developed a comprehensive Web API and Angular application to automate the budgeting and planning process for the Balochistan province.',
+      description: 'Developed a comprehensive Web API and Angular application to automate the budgeting and planning process for the Balochistan province.',
       skills: ['.NET Core', 'Web API', 'Angular', 'SQL Server'],
     },
   ],
@@ -405,21 +301,21 @@ export const portfolioConfig: PortfolioConfig = {
     platforms: [
       {
         name: 'Personal Blog',
-        icon: 'bi-pencil-square',
+        icon: 'blog',
         url: 'https://mwaseemzakir.com/',
         description: 'Technical articles on .NET, Angular, and software architecture',
         gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
       },
       {
         name: 'Medium',
-        icon: 'bi-medium',
+        icon: 'medium',
         url: 'https://medium.com/@mwaseemzakir',
         description: 'In-depth tutorials and thought leadership pieces',
         gradient: 'linear-gradient(135deg, #00ab6c 0%, #00d084 100%)',
       },
       {
         name: 'YouTube',
-        icon: 'bi-youtube',
+        icon: 'youtube',
         url: 'https://youtube.com/@mwaseemzakir',
         description: 'Video tutorials and coding demonstrations',
         gradient: 'linear-gradient(135deg, #ff0000 0%, #cc0000 100%)',
@@ -428,3 +324,5 @@ export const portfolioConfig: PortfolioConfig = {
     topics: ['.NET Development', 'Clean Architecture', 'Best Practices', 'Career Tips', 'System Design'],
   },
 };
+
+export default portfolioConfig;

@@ -35,6 +35,7 @@ export class AppComponent {
   currentYear: number = new Date().getFullYear();
   sidebarName = portfolioConfig.personal.name;
   sidebarTitle = portfolioConfig.personal.title;
+  sidebarImage = portfolioConfig.personal.profileImage;
   private readonly SCROLL_OFFSET = 100;
 
   @HostListener('window:scroll')
