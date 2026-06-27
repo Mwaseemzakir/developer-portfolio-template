@@ -56,8 +56,11 @@ export default function Sidebar({ config }: Props) {
   };
 
   const downloadCV = () => {
+    // next/image and <Link> get the basePath prepended automatically, but a
+    // hand-built anchor does not — so prepend it here for sub-path deploys.
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
     const link = document.createElement('a');
-    link.href = config.personal.resumeFile;
+    link.href = `${basePath}${config.personal.resumeFile}`;
     link.download = config.personal.resumeFileName;
     link.click();
   };

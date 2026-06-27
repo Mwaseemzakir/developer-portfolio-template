@@ -1,0 +1,81 @@
+name: Deploy portfolios to GitHub Pages
+
+on:
+  push:
+    branches: [master, main]
+  workflow_dispatch:
+
+# Allow GITHUB_TOKEN to deploy to Pages.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One concurrent deploy; cancel superseded runs but let in-flight ones finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: |
+            templates/nextjs/package-lock.json
+            templates/angular/package-lock.json
+
+      - name: Compute base path
+        id: base
+        run: echo "repo=${GITHUB_REPOSITORY#*/}" >> "$GITHUB_OUTPUT"
+
+      # ---- Next.js (React) ----
+      - name: Build Next.js
+        working-directory: templates/nextjs
+        env:
+          NEXT_PUBLIC_BASE_PATH: /${{ steps.base.outputs.repo }}/nextjs
+        run: |
+          npm ci
+          npm run build
+
+      # ---- Angular ----
+      - name: Build Angular
+        working-directory: templates/angular
+        run: |
+          npm ci
+          npx ng build --base-href "/${{ steps.base.outputs.repo }}/angular/"
+
+      # ---- Assemble the published site ----
+      - name: Assemble site
+        run: |
+          mkdir -p _site/nextjs _site/angular
+          cp -r templates/nextjs/out/. _site/nextjs/
+          cp -r templates/angular/dist/resume/browser/. _site/angular/
+          cp .github/pages/index.html _site/index.html
+          # SPA fallback so client-side routes resolve on Pages.
+          cp _site/angular/index.html _site/angular/404.html
+          # Skip Jekyll processing (keeps files starting with _ and assets intact).
+          touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
