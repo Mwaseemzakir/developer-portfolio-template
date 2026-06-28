@@ -4,11 +4,13 @@ A professional, fully-featured developer portfolio/CV template available in mult
 
 ## Live Demos
 
-Both templates are deployed to GitHub Pages on every push to `main`:
+All templates are deployed to GitHub Pages on every push to `main`:
 
 - 🏠 **Landing page:** https://mwaseemzakir.github.io/developer-portfolio-template/
 - ⚛️ **Next.js (React):** https://mwaseemzakir.github.io/developer-portfolio-template/nextjs/
+- ⚛️ **React (Vite):** https://mwaseemzakir.github.io/developer-portfolio-template/react/
 - 🅰️ **Angular:** https://mwaseemzakir.github.io/developer-portfolio-template/angular/
+- 📄 **Plain HTML:** https://mwaseemzakir.github.io/developer-portfolio-template/html/
 
 ## Available Templates
 
@@ -16,6 +18,8 @@ Both templates are deployed to GitHub Pages on every push to `main`:
 |-----------|-----------|-------|-----------|--------|
 | **Angular** | [`templates/angular`](./templates/angular) | Angular 17, Bootstrap, SSR | [View](https://mwaseemzakir.github.io/developer-portfolio-template/angular/) | ✅ Ready |
 | **Next.js** | [`templates/nextjs`](./templates/nextjs) | Next.js 14, Tailwind CSS, App Router | [View](https://mwaseemzakir.github.io/developer-portfolio-template/nextjs/) | ✅ Ready |
+| **React** | [`templates/react`](./templates/react) | React 18, Vite, Tailwind CSS | [View](https://mwaseemzakir.github.io/developer-portfolio-template/react/) | ✅ Ready |
+| **Plain HTML** | [`templates/html`](./templates/html) | Vanilla HTML, CSS, JS (no build) | [View](https://mwaseemzakir.github.io/developer-portfolio-template/html/) | ✅ Ready |
 | Astro | `templates/astro` | Coming soon | — | 🔜 Planned |
 | Vue / Nuxt | `templates/nuxt` | Coming soon | — | 🔜 Planned |
 | SvelteKit | `templates/sveltekit` | Coming soon | — | 🔜 Planned |
@@ -43,6 +47,7 @@ Every template uses a **single configuration file** — the only file you need t
 ```
 templates/angular/src/app/portfolio.config.ts
 templates/nextjs/src/config/portfolio.config.ts
+templates/react/src/config/portfolio.config.ts
 ```
 
 Open that file, replace the data with your own information, swap `public/pp.jpeg` for your photo and `public/resume.pdf` for your CV, then deploy.
@@ -68,6 +73,16 @@ npm run build      # production build
 npm start          # serve production build
 ```
 
+### React (Vite)
+
+```bash
+cd templates/react
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # production build → dist/
+npm run preview    # preview production build
+```
+
 ## Folder Structure
 
 ```
@@ -79,7 +94,8 @@ developer-portfolio-template/
 │   └── portfolio.config.example.ts  # Fully annotated TypeScript config example
 └── templates/
     ├── angular/                 # Angular 17 + Bootstrap template
-    └── nextjs/                  # Next.js 14 + Tailwind CSS template
+    ├── nextjs/                  # Next.js 14 + Tailwind CSS template
+    └── react/                   # React 18 + Vite + Tailwind CSS template
 ```
 
 ## Design

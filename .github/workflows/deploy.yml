@@ -31,6 +31,7 @@ jobs:
           cache-dependency-path: |
             templates/nextjs/package-lock.json
             templates/angular/package-lock.json
+            templates/react/package-lock.json
 
       - name: Compute base path
         id: base
@@ -45,6 +46,15 @@ jobs:
           npm ci
           npm run build
 
+      # ---- React (Vite) ----
+      - name: Build React
+        working-directory: templates/react
+        env:
+          VITE_BASE_PATH: /${{ steps.base.outputs.repo }}/react/
+        run: |
+          npm ci
+          npm run build
+
       # ---- Angular ----
       - name: Build Angular
         working-directory: templates/angular
@@ -55,9 +65,12 @@ jobs:
       # ---- Assemble the published site ----
       - name: Assemble site
         run: |
-          mkdir -p _site/nextjs _site/angular
+          mkdir -p _site/nextjs _site/react _site/angular _site/html
           cp -r templates/nextjs/out/. _site/nextjs/
+          cp -r templates/react/dist/. _site/react/
           cp -r templates/angular/dist/resume/browser/. _site/angular/
+          # Plain HTML template needs no build — copy it as-is.
+          cp -r templates/html/. _site/html/
           cp .github/pages/index.html _site/index.html
           # SSR-enabled Angular builds emit the client shell as index.csr.html
           # rather than index.html; use it as the entry point for static hosting.
