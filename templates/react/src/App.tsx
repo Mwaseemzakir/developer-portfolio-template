@@ -14,15 +14,11 @@ export default function App() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="flex min-h-screen font-sans">
-      {/* Desktop sidebar */}
+    <div className="min-h-screen font-sans text-slate-900">
       <Sidebar config={portfolioConfig} />
-
-      {/* Mobile top nav */}
       <MobileNav />
 
-      {/* Main content */}
-      <main className="flex-1 md:ml-60 mt-14 md:mt-0 bg-slate-100 px-4 py-6 md:px-8 md:py-8">
+      <main className="md:ml-72 mt-14 md:mt-0 px-4 py-6 md:px-8 lg:px-12 md:py-10">
         <section id="headline">
           <Headline />
         </section>
@@ -55,8 +51,8 @@ export default function App() {
           <Certifications />
         </section>
 
-        <footer className="max-w-[900px] mx-auto mt-8 py-6 text-center border-t border-slate-200">
-          <p className="text-slate-400 text-[0.8125rem] font-medium">
+        <footer className="max-w-[1040px] mx-auto mt-8 py-8 text-center border-t border-slate-200">
+          <p className="text-slate-500 text-[0.8125rem] font-semibold">
             &copy; {currentYear} {portfolioConfig.personal.name}. All rights reserved.
           </p>
         </footer>

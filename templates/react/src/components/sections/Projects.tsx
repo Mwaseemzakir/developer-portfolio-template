@@ -1,33 +1,29 @@
 import portfolioConfig from '@/config/portfolio.config';
-import { BiFolderOpen, BiBuilding, BiCalendar } from 'react-icons/bi';
+import { BiFolderOpen, BiBuilding, BiCalendar, BiCodeAlt } from 'react-icons/bi';
 
 export default function Projects() {
   const { projects } = portfolioConfig;
 
   return (
     <div className="section-card fade-in">
-      <h2 className="section-title">Projects</h2>
-      <div className="space-y-4 mt-5">
+      <p className="eyebrow">Delivery</p>
+      <h2 className="section-title mt-2">Selected Projects</h2>
+
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
         {projects.map((project, i) => (
-          <div
-            key={i}
-            className="p-5 bg-slate-50 rounded-[10px] border border-slate-200 transition-all duration-200 hover:border-slate-300 hover:shadow-md"
-          >
-            {/* Title row */}
-            <div className="flex items-start gap-3 mb-3">
-              <div className="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white text-lg flex-shrink-0 mt-0.5">
+          <article key={i} className="surface-card surface-card-hover flex h-full flex-col p-5">
+            <div className="mb-4 flex items-start gap-3">
+              <div className="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg border border-cyan-100 bg-cyan-50 text-xl text-cyan-700">
                 <BiFolderOpen />
               </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-sans text-lg font-bold text-slate-900 tracking-tight mb-1">
-                  {project.name}
-                </h3>
-                <div className="flex flex-wrap gap-3 text-sm">
-                  <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
+              <div className="min-w-0 flex-1">
+                <h3 className="text-lg font-extrabold tracking-normal text-slate-950">{project.name}</h3>
+                <div className="mt-2 flex flex-wrap gap-3 text-sm">
+                  <span className="inline-flex items-center gap-1 font-bold text-slate-600">
                     <BiBuilding className="text-slate-400" />
                     {project.company}
                   </span>
-                  <span className="inline-flex items-center gap-1 text-slate-400 font-medium">
+                  <span className="inline-flex items-center gap-1 font-bold text-slate-500">
                     <BiCalendar className="text-slate-400" />
                     {project.year}
                   </span>
@@ -35,18 +31,22 @@ export default function Projects() {
               </div>
             </div>
 
-            {/* Description */}
-            <p className="text-slate-500 text-sm leading-[1.7] mb-3">{project.description}</p>
+            <p className="mb-4 flex-1 text-sm leading-[1.75] text-slate-600">{project.description}</p>
 
-            {/* Skills */}
-            <div className="flex flex-wrap gap-1.5">
-              {project.skills.map((skill) => (
-                <span key={skill} className="skill-badge">
-                  {skill}
-                </span>
-              ))}
+            <div>
+              <p className="mb-2 inline-flex items-center gap-1.5 text-[0.7rem] font-extrabold uppercase tracking-[0.16em] text-slate-400">
+                <BiCodeAlt />
+                Stack
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {project.skills.map((skill) => (
+                  <span key={skill} className="tech-badge">
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </div>

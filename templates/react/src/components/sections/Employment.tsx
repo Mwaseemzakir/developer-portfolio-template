@@ -13,9 +13,9 @@ import {
 
 function parseDate(dateStr: string): Date {
   if (dateStr === 'Present') return new Date();
-  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const [m, y] = dateStr.split(' ');
-  return new Date(parseInt(y), months.indexOf(m), 1);
+  return new Date(parseInt(y, 10), months.indexOf(m), 1);
 }
 
 function calculateDuration(start: string, end: string): string {
@@ -23,7 +23,10 @@ function calculateDuration(start: string, end: string): string {
   const e = parseDate(end);
   let years = e.getFullYear() - s.getFullYear();
   let months = e.getMonth() - s.getMonth();
-  if (months < 0) { years--; months += 12; }
+  if (months < 0) {
+    years--;
+    months += 12;
+  }
   const parts: string[] = [];
   if (years > 0) parts.push(`${years} yr${years > 1 ? 's' : ''}`);
   if (months > 0) parts.push(`${months} mo`);
@@ -41,78 +44,78 @@ function calculateTotalYears(entries: ExperienceEntry[]): number {
 }
 
 function TimelineEntry({ entry, isTraining }: { entry: ExperienceEntry; isTraining?: boolean }) {
-  const accentColor = isTraining ? '#0ea5e9' : '#2563eb';
+  const accentColor = isTraining ? '#0891b2' : '#1f6feb';
 
   return (
-    <div className="relative mb-8 last:mb-0 pl-6">
-      {/* Timeline dot */}
+    <div className="relative mb-8 pl-6 last:mb-0">
       <div
-        className="absolute left-[-33px] top-2 w-3.5 h-3.5 rounded-full bg-white border-[3px] z-10 transition-all duration-200"
+        className="absolute left-[-33px] top-4 z-10 h-3.5 w-3.5 rounded-full border-[3px] bg-white"
         style={{ borderColor: accentColor }}
       />
 
-      {/* Card */}
-      <div className="bg-slate-50 rounded-[10px] p-6 border border-slate-200 transition-all duration-200 hover:border-slate-300 hover:shadow-md">
-        {/* Position + meta */}
+      <div className="surface-card surface-card-hover p-6">
         <div className="mb-4">
-          <h3 className="font-sans text-xl font-bold text-slate-900 mb-2 tracking-tight">{entry.position}</h3>
+          <h3 className="mb-3 text-xl font-extrabold tracking-normal text-slate-950">{entry.position}</h3>
           <div className="flex flex-wrap gap-2">
             <span
-              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[0.8125rem] font-semibold ${
+              className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-[0.8125rem] font-bold ${
                 isTraining
-                  ? 'bg-sky-50 text-sky-600'
+                  ? 'bg-cyan-50 text-cyan-700'
                   : entry.jobType === 'Remote'
-                  ? 'bg-emerald-50 text-emerald-600'
-                  : 'bg-blue-50 text-blue-600'
+                    ? 'bg-emerald-50 text-emerald-700'
+                    : 'bg-blue-50 text-blue-700'
               }`}
             >
               {isTraining ? (
-                <><BiHistory className="text-sm" /> Part-Time</>
+                <>
+                  <BiHistory className="text-sm" /> Part-Time
+                </>
               ) : entry.jobType === 'Remote' ? (
-                <><BiHome className="text-sm" /> Remote</>
+                <>
+                  <BiHome className="text-sm" /> Remote
+                </>
               ) : (
-                <><BiBuilding className="text-sm" /> On-site</>
+                <>
+                  <BiBuilding className="text-sm" /> On-site
+                </>
               )}
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[0.8125rem] font-semibold bg-amber-50 text-amber-600">
+            <span className="inline-flex items-center gap-1.5 rounded-md bg-amber-50 px-2.5 py-1 text-[0.8125rem] font-bold text-amber-700">
               <BiMapPin className="text-sm" />
               {entry.location}
             </span>
           </div>
         </div>
 
-        {/* Company + dates */}
-        <div className="flex flex-wrap items-center gap-4 pb-3 mb-4 border-b border-slate-200">
+        <div className="mb-4 flex flex-wrap items-center gap-4 border-b border-slate-200 pb-3">
           <a
             href={entry.companyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-blue-600 font-semibold text-[0.9375rem] no-underline hover:text-blue-700 transition-colors"
+            className="inline-flex items-center gap-1.5 text-[0.9375rem] font-extrabold text-blue-700 no-underline transition hover:text-cyan-700"
           >
             <BiBuilding className="text-base" />
             {entry.company}
           </a>
-          <span className="inline-flex items-center gap-1.5 text-slate-500 font-medium text-sm">
+          <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-500">
             <BiCalendar className="text-base text-slate-400" />
-            {entry.startDate} – {entry.endDate}
-            <span className="text-blue-600 font-semibold ml-1">
+            {entry.startDate} - {entry.endDate}
+            <span className="ml-1 font-extrabold text-blue-700">
               ({calculateDuration(entry.startDate, entry.endDate)})
             </span>
           </span>
         </div>
 
-        {/* Description */}
-        <p className="text-slate-500 leading-[1.7] text-[0.9375rem] mb-4">{entry.description}</p>
+        <p className="mb-4 text-[0.9375rem] leading-[1.75] text-slate-600">{entry.description}</p>
 
-        {/* Technologies */}
         <div className="mt-4">
-          <div className="inline-flex items-center gap-1.5 text-slate-700 font-semibold text-[0.8125rem] uppercase tracking-wider mb-2">
+          <div className="mb-2 inline-flex items-center gap-1.5 text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-slate-500">
             <BiCog className="text-slate-400" />
-            Technologies:
+            Technologies
           </div>
-          <div className="flex flex-wrap gap-1.5 mt-1.5">
+          <div className="mt-1.5 flex flex-wrap gap-1.5">
             {entry.skills.map((skill) => (
-              <span key={skill} className="skill-badge">
+              <span key={skill} className="tech-badge">
                 {skill}
               </span>
             ))}
@@ -129,30 +132,28 @@ export default function Employment() {
 
   return (
     <div className="section-card fade-in">
-      <h2 className="section-title">Employment History</h2>
+      <p className="eyebrow">Experience</p>
+      <h2 className="section-title mt-2">Employment History</h2>
 
-      {/* Experience badge */}
-      <div className="inline-flex items-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-full font-semibold text-sm mb-7">
+      <div className="mb-7 inline-flex items-center gap-2 rounded-lg bg-slate-950 px-4 py-2.5 text-sm font-extrabold text-white shadow-lg">
         <BiBriefcaseFilled className="text-lg" />
         <span>{totalYears}+ years of experience</span>
       </div>
 
-      {/* Jobs timeline */}
-      <div className="relative pl-8" style={{ borderLeft: '2px solid #2563eb', borderRadius: '2px' }}>
+      <div className="relative pl-8" style={{ borderLeft: '2px solid #1f6feb', borderRadius: '2px' }}>
         {jobs.map((job, i) => (
           <TimelineEntry key={i} entry={job} />
         ))}
       </div>
 
-      {/* Training */}
       {training.length > 0 && (
         <>
           <hr className="my-9 border-slate-200" />
-          <h2 className="flex items-center gap-2.5 font-serif text-2xl font-extrabold text-slate-900 mb-6 tracking-tight">
-            <BiAward className="text-sky-500" />
+          <h2 className="mb-6 flex items-center gap-2.5 text-2xl font-extrabold tracking-normal text-slate-950">
+            <BiAward className="text-cyan-600" />
             Part-Time Training Experience
           </h2>
-          <div className="relative pl-8" style={{ borderLeft: '2px solid #0ea5e9', borderRadius: '2px' }}>
+          <div className="relative pl-8" style={{ borderLeft: '2px solid #0891b2', borderRadius: '2px' }}>
             {training.map((t, i) => (
               <TimelineEntry key={i} entry={t} isTraining />
             ))}

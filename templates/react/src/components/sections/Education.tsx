@@ -6,50 +6,41 @@ export default function Education() {
 
   return (
     <div className="section-card fade-in">
-      <h2 className="section-title">Education</h2>
-      <div className="space-y-6">
+      <p className="eyebrow">Foundation</p>
+      <h2 className="section-title mt-2">Education</h2>
+
+      <div className="space-y-5">
         {education.map((edu, i) => (
-          <div
-            key={i}
-            className="p-6 bg-slate-50 rounded-[10px] border border-slate-200 transition-all duration-200 hover:border-slate-300 hover:shadow-md"
-          >
-            {/* Header */}
-            <div className="flex items-start gap-4 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-600 flex items-center justify-center text-white text-2xl flex-shrink-0">
+          <div key={i} className="surface-card surface-card-hover p-6">
+            <div className="flex items-start gap-4">
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg border border-blue-100 bg-blue-50 text-2xl text-blue-700">
                 <BiBook />
               </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-sans text-xl font-bold text-slate-900 mb-1 tracking-tight">
-                  {edu.degree}
-                </h3>
-                <p className="text-blue-600 font-semibold text-base">{edu.institution}</p>
+              <div className="min-w-0 flex-1">
+                <h3 className="text-xl font-extrabold tracking-normal text-slate-950">{edu.degree}</h3>
+                <p className="mt-1 text-base font-bold text-blue-700">{edu.institution}</p>
+
+                <div className="mt-4 flex flex-wrap gap-3">
+                  <span className="meta-pill">
+                    <BiCalendar className="text-slate-400" />
+                    {edu.startDate} - {edu.endDate}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-md border border-emerald-100 bg-emerald-50 px-3 py-1.5 text-xs font-extrabold text-emerald-700">
+                    <BiMedal />
+                    Grade: {edu.grade}
+                  </span>
+                </div>
               </div>
             </div>
 
-            {/* Meta: dates + grade */}
-            <div className="flex flex-wrap gap-3 mb-5">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white rounded-lg border border-slate-200 text-sm font-medium text-slate-600">
-                <BiCalendar className="text-slate-400" />
-                {edu.startDate} – {edu.endDate}
-              </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 rounded-lg border border-emerald-100 text-sm font-semibold text-emerald-600">
-                <BiMedal />
-                Grade: {edu.grade}
-              </span>
-            </div>
-
-            {/* Coursework */}
             {edu.courses.length > 0 && (
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2">
+              <div className="mt-6">
+                <p className="mb-2 text-xs font-extrabold uppercase tracking-[0.16em] text-slate-400">
                   Relevant Coursework
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {edu.courses.map((course) => (
-                    <span
-                      key={course}
-                      className="inline-block px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-medium text-slate-600 transition-all duration-200 hover:border-blue-300 hover:text-blue-600"
-                    >
+                    <span key={course} className="skill-badge">
                       {course}
                     </span>
                   ))}

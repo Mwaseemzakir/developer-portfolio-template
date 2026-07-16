@@ -11,17 +11,21 @@ import {
   BiEdit,
   BiBadgeCheck,
   BiDownload,
+  BiEnvelope,
+  BiLogoGithub,
+  BiLogoLinkedin,
+  BiGlobe,
 } from 'react-icons/bi';
 
 const NAV_ITEMS = [
   { id: 'headline', label: 'Home', Icon: BiHome },
   { id: 'profile-summary', label: 'Summary', Icon: BiUser },
   { id: 'skills', label: 'Skills', Icon: BiCog },
-  { id: 'employment', label: 'Employment', Icon: BiBriefcase },
+  { id: 'employment', label: 'Experience', Icon: BiBriefcase },
   { id: 'education', label: 'Education', Icon: BiBook },
   { id: 'project', label: 'Projects', Icon: BiFolderOpen },
   { id: 'content-creator', label: 'Content', Icon: BiEdit },
-  { id: 'certification', label: 'Certifications', Icon: BiBadgeCheck },
+  { id: 'certification', label: 'Credentials', Icon: BiBadgeCheck },
 ];
 
 interface Props {
@@ -33,7 +37,7 @@ export default function Sidebar({ config }: Props) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY + 120;
+      const scrollY = window.scrollY + 140;
       for (let i = NAV_ITEMS.length - 1; i >= 0; i--) {
         const el = document.getElementById(NAV_ITEMS[i].id);
         if (el && el.offsetTop <= scrollY) {
@@ -49,8 +53,7 @@ export default function Sidebar({ config }: Props) {
   }, []);
 
   const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const downloadCV = () => {
@@ -60,79 +63,97 @@ export default function Sidebar({ config }: Props) {
     link.click();
   };
 
-  return (
-    <aside className="sidebar-wrapper hidden md:flex flex-col w-60 h-screen fixed left-0 top-0 overflow-y-auto z-50 shadow-xl"
-      style={{ background: 'linear-gradient(180deg, #0f172a 0%, #1e293b 100%)' }}>
+  const socials = [
+    { href: `mailto:${config.contact.email}`, label: 'Email', Icon: BiEnvelope },
+    { href: config.contact.linkedin, label: 'LinkedIn', Icon: BiLogoLinkedin },
+    { href: config.contact.github, label: 'GitHub', Icon: BiLogoGithub },
+    { href: config.contact.website, label: 'Website', Icon: BiGlobe },
+  ].filter((item) => item.href);
 
-      {/* Profile header */}
-      <div className="px-5 pt-8 pb-6 text-center border-b border-white/10">
-        <div className="mb-4 flex justify-center">
-          <img
-            src={asset(config.personal.profileImage)}
-            alt={config.personal.name}
-            width={100}
-            height={100}
-            className="rounded-full border-[3px] object-cover transition-all duration-200 w-[100px] h-[100px]"
-            style={{ borderColor: 'rgba(255,255,255,0.15)' }}
-            onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#3b82f6')}
-            onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)')}
-          />
+  return (
+    <aside className="sidebar-wrapper hidden md:flex fixed left-0 top-0 z-50 h-screen w-72 flex-col overflow-y-auto border-r border-white/10 bg-[#111827] text-white shadow-[12px_0_40px_rgba(15,23,42,0.18)]">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_20%_0%,rgba(8,145,178,0.32),transparent_28rem),linear-gradient(180deg,rgba(31,111,235,0.18),transparent_36%)]" />
+
+      <div className="relative px-6 pt-7 pb-6">
+        <div className="rounded-lg border border-white/10 bg-white/[0.06] p-4 shadow-2xl">
+          <div className="flex items-center gap-4">
+            <img
+              src={asset(config.personal.profileImage)}
+              alt={config.personal.name}
+              width={72}
+              height={72}
+              className="h-[72px] w-[72px] flex-shrink-0 rounded-lg border border-white/20 object-cover shadow-lg"
+            />
+            <div className="min-w-0">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-200">Portfolio</p>
+              <h2 className="mt-1 truncate text-lg font-extrabold tracking-normal text-white">{config.personal.name}</h2>
+              <p className="mt-1 text-sm font-semibold text-slate-300">{config.personal.title}</p>
+            </div>
+          </div>
+
+          <div className="mt-5 grid grid-cols-2 gap-2 text-center">
+            <div className="rounded-md border border-white/10 bg-black/15 px-3 py-2">
+              <div className="text-lg font-extrabold text-white">{config.projects.length}+</div>
+              <div className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-slate-400">Projects</div>
+            </div>
+            <div className="rounded-md border border-white/10 bg-black/15 px-3 py-2">
+              <div className="text-lg font-extrabold text-white">{config.skills.length}</div>
+              <div className="text-[0.65rem] font-bold uppercase tracking-[0.16em] text-slate-400">Skill areas</div>
+            </div>
+          </div>
         </div>
-        <h2 className="font-serif text-[1.125rem] font-bold text-white mb-1 tracking-[-0.01em]">
-          {config.personal.name}
-        </h2>
-        <p className="text-slate-400 text-[0.8125rem] font-medium tracking-wide">
-          {config.personal.title}
-        </p>
       </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 px-3 py-4">
-        <ul className="space-y-0.5 list-none p-0 m-0">
+      <nav className="relative flex-1 px-4 py-2">
+        <ul className="space-y-1.5 list-none">
           {NAV_ITEMS.map(({ id, label, Icon }) => (
             <li key={id}>
               <button
                 onClick={() => scrollToSection(id)}
-                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-[0.875rem] font-medium transition-all duration-200 cursor-pointer text-left ${
+                className={`group flex w-full items-center gap-3 rounded-lg px-3.5 py-3 text-left text-sm font-semibold transition duration-200 ${
                   activeSection === id
-                    ? 'bg-blue-600 text-white shadow-[0_2px_8px_rgba(37,99,235,0.3)]'
-                    : 'text-white/70 hover:bg-white/[0.06] hover:text-white'
+                    ? 'bg-white text-slate-950 shadow-lg'
+                    : 'text-slate-300 hover:bg-white/10 hover:text-white'
                 }`}
               >
-                <Icon
-                  className={`text-[1.125rem] w-5 text-center flex-shrink-0 transition-opacity duration-200 ${
-                    activeSection === id ? 'opacity-100' : 'opacity-70'
+                <span
+                  className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md transition ${
+                    activeSection === id
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-white/10 text-cyan-100 group-hover:bg-white/15'
                   }`}
-                />
-                <span>{label}</span>
+                >
+                  <Icon className="text-lg" />
+                </span>
+                <span className="font-semibold">{label}</span>
               </button>
             </li>
           ))}
         </ul>
       </nav>
 
-      {/* Download CV */}
-      <div className="px-3 pb-6 pt-4 border-t border-white/10">
+      <div className="relative px-6 pb-6 pt-4">
+        <div className="mb-4 flex items-center justify-center gap-2">
+          {socials.map(({ href, label, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target={href.startsWith('mailto:') ? undefined : '_blank'}
+              rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+              aria-label={label}
+              className="flex h-9 w-9 items-center justify-center rounded-md border border-white/10 bg-white/[0.06] text-slate-200 transition hover:-translate-y-0.5 hover:bg-white hover:text-slate-950"
+            >
+              <Icon className="text-lg" />
+            </a>
+          ))}
+        </div>
+
         <button
           onClick={downloadCV}
-          className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border text-[0.875rem] font-semibold transition-all duration-200"
-          style={{
-            borderColor: 'rgba(255,255,255,0.15)',
-            color: 'rgba(255,255,255,0.85)',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(255,255,255,0.08)';
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)';
-            e.currentTarget.style.color = '#fff';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'transparent';
-            e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
-            e.currentTarget.style.color = 'rgba(255,255,255,0.85)';
-          }}
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-cyan-500 px-4 py-3 text-sm font-extrabold text-slate-950 shadow-[0_12px_28px_rgba(8,145,178,0.28)] transition hover:-translate-y-0.5 hover:bg-cyan-300"
         >
-          <BiDownload className="text-base" />
-          <span>Download CV</span>
+          <BiDownload className="text-lg" />
+          Download CV
         </button>
       </div>
     </aside>

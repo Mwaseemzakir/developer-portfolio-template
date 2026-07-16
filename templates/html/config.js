@@ -1,6 +1,6 @@
 /**
  * ============================================================
- *  PORTFOLIO CONFIGURATION — edit this file to make it yours
+ *  PORTFOLIO CONFIGURATION - edit this file to make it yours
  * ============================================================
  *
  *  This is the single source of truth for all portfolio data.
@@ -14,7 +14,7 @@ window.portfolioConfig = {
     title: 'Technical Lead',
     subtitle: 'Full Stack Developer | .NET | Angular',
     tagline: 'Technical Lead, Senior Software Engineer, Technical Trainer and Content Creator',
-    // Placeholder avatar — swap for your own (e.g. './profile_picture.png').
+    // Placeholder avatar - swap for your own (e.g. './profile_picture.png').
     profileImage: 'https://ui-avatars.com/api/?name=Muhammad+Waseem&size=200&background=2563eb&color=ffffff&bold=true',
     resumeFile: './resume.pdf',
     resumeFileName: 'resume.pdf',
@@ -46,6 +46,10 @@ window.portfolioConfig = {
       { company: 'Cinnova Technologies', companyUrl: 'https://www.cinnova.com', position: 'Sr Software Engineer', startDate: 'Nov 2022', endDate: 'Oct 2023', description: 'Collaborated with USA clients, adding new features and resolving critical bugs across various technology stacks, leading to a 20% increase in user satisfaction.', skills: ['.NET Core', 'React', 'SQL Server', 'Azure DevOps'], jobType: 'On-site', location: 'Lahore, Pakistan' },
       { company: 'Abacus Consulting', companyUrl: 'https://abacus-global.com/', position: 'Senior Consultant', startDate: 'Nov 2019', endDate: 'Nov 2022', description: 'Led the automation of budgeting, schemes, and planning processes for the Balochistan province, reducing manual overhead by 40%.', skills: ['Project Management', 'Process Automation', 'Angular', '.NET Core', 'SQL Server'], jobType: 'On-site', location: 'Lahore, Pakistan' },
     ],
+    training: [
+      { company: 'Excellence Delivered (ExD) Pvt Ltd', companyUrl: 'https://www.exd.com.pk', position: 'Technical Trainer (.NET + Angular)', startDate: 'Aug 2024', endDate: 'Nov 2024', description: 'Mentored students under a government initiative in .NET, Angular, and SQL through hands-on full-stack development.', skills: ['Training', '.NET MVC', '.NET API', 'Angular', 'SQL', 'Mentoring'], jobType: 'On-site', location: 'Lahore, Pakistan' },
+      { company: 'Excellence Delivered (ExD) Pvt Ltd', companyUrl: 'https://www.exd.com.pk', position: 'Technical Trainer (.NET)', startDate: 'Aug 2022', endDate: 'Nov 2022', description: 'Trained graduates in practical .NET development, helping them become confident industry-ready developers.', skills: ['Training', 'C#', 'ASP.NET', '.NET', 'Full Stack Development'], jobType: 'On-site', location: 'Lahore, Pakistan' },
+    ],
   },
 
   education: [
@@ -71,9 +75,9 @@ window.portfolioConfig = {
   contentCreation: {
     description: 'Passionate about sharing knowledge through writing and creating technical content that helps developers grow.',
     platforms: [
-      { name: 'Personal Blog', url: 'https://mwaseemzakir.com/', description: 'Technical articles on .NET, Angular, and software architecture' },
-      { name: 'Medium', url: 'https://medium.com/@mwaseemzakir', description: 'In-depth tutorials and thought leadership pieces' },
-      { name: 'YouTube', url: 'https://youtube.com/@mwaseemzakir', description: 'Video tutorials and coding demonstrations' },
+      { name: 'Personal Blog', icon: 'blog', url: 'https://mwaseemzakir.com/', description: 'Technical articles on .NET, Angular, and software architecture', gradient: 'linear-gradient(135deg, #1f6feb 0%, #0891b2 100%)' },
+      { name: 'Medium', icon: 'medium', url: 'https://medium.com/@mwaseemzakir', description: 'In-depth tutorials and thought leadership pieces', gradient: 'linear-gradient(135deg, #059669 0%, #0d9488 100%)' },
+      { name: 'YouTube', icon: 'youtube', url: 'https://youtube.com/@mwaseemzakir', description: 'Video tutorials and coding demonstrations', gradient: 'linear-gradient(135deg, #dc2626 0%, #be123c 100%)' },
     ],
     topics: ['.NET Development', 'Clean Architecture', 'Best Practices', 'Career Tips', 'System Design'],
   },

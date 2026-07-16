@@ -1,6 +1,6 @@
 /**
  * ============================================================
- *  PORTFOLIO CONFIGURATION — edit this file to make it yours
+ *  PORTFOLIO CONFIGURATION - edit this file to make it yours
  * ============================================================
  *
  *  This is the single source of truth for all portfolio data.
@@ -18,7 +18,7 @@ const portfolioConfig: PortfolioConfig = {
     title: 'Technical Lead',
     subtitle: 'Full Stack Developer | .NET | Angular',
     tagline: 'Technical Lead, Senior Software Engineer, Technical Trainer and Content Creator',
-    // Placeholder avatar — swap for your own (e.g. '/profile_picture.png').
+    // Placeholder avatar - swap for your own (e.g. '/profile_picture.png').
     profileImage: 'https://ui-avatars.com/api/?name=Muhammad+Waseem&size=200&background=2563eb&color=ffffff&bold=true',
     resumeFile: '/resume.pdf',
     resumeFileName: 'resume.pdf',
@@ -59,7 +59,7 @@ const portfolioConfig: PortfolioConfig = {
   experience: {
     jobs: [
       {
-        company: 'Squadio | سكواديو',
+        company: 'Squadio',
         companyUrl: 'https://www.squadio.com',
         position: 'Technical Lead',
         startDate: 'Jan 2025',
@@ -163,7 +163,7 @@ const portfolioConfig: PortfolioConfig = {
       company: 'Open Source',
       year: '2026',
       description:
-        'Published a NuGet package providing comprehensive language codes, country codes, and currency codes from around the globe — an essential tool for internationalization and localization in .NET projects. 2,400+ downloads.',
+        'Published a NuGet package providing comprehensive language codes, country codes, and currency codes from around the globe - an essential tool for internationalization and localization in .NET projects. 2,400+ downloads.',
       skills: ['.NET 6', '.NET Standard 2.0', '.NET Framework 4.6.2', 'Localization', 'NuGet'],
     },
     {
